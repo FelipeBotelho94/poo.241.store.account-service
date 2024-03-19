@@ -1,9 +1,8 @@
 package espm.store.account;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,30 +10,34 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+/*
+ * Aqui eh a camada de exposicao da API. No caso no padrao REST: GET, POST, PUT, DELETE.
+ */
 @RestController
 public class AccountResource {
 
-    static private List<AccountOut> accounts = new ArrayList<>();
+    // procura por um objeto do tipo AccountService no pool de objetos e injeta aqui
+    @Autowired
+    private AccountService accountService;
 
     @PostMapping("/accounts")
     public void create(@RequestBody AccountIn in) {
-        AccountOut out = new AccountOut(UUID.randomUUID().toString(), in.name(), in.email());
-        accounts.add(out);
+        accountService.create(AccountParser.to(in));
     }
 
     @GetMapping("/accounts")
     public List<AccountOut> get() {
-        return accounts;
+        return accountService.findAll().stream().map(AccountParser::to).toList();
     }
 
     @GetMapping("/accounts/{id}")
     public AccountOut get(@PathVariable String id) {
-        return accounts.stream().filter(account -> account.id().equals(id)).findFirst().orElse(null);
+        return AccountParser.to(accountService.find(id));
     }
 
     @DeleteMapping("/accounts/{id}")
     public void delete(@PathVariable String id) {
-        accounts.removeIf(account -> account.id().equals(id));
+        accountService.delete(id);
     }
 
     @GetMapping("/hello")
