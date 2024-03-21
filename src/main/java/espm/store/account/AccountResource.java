@@ -3,6 +3,7 @@ package espm.store.account;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,12 +32,12 @@ public class AccountResource {
     }
 
     @GetMapping("/accounts/{id}")
-    public AccountOut get(@PathVariable String id) {
+    public AccountOut get(@NonNull @PathVariable String id) {
         return AccountParser.to(accountService.find(id));
     }
 
     @DeleteMapping("/accounts/{id}")
-    public void delete(@PathVariable String id) {
+    public void delete(@NonNull @PathVariable String id) {
         accountService.delete(id);
     }
 

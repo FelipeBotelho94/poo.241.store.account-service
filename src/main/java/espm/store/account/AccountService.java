@@ -3,6 +3,7 @@ package espm.store.account;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 
 /* 
@@ -18,7 +19,7 @@ public class AccountService {
         return accountRepository.save(new AccountModel(account)).to();
     }
 
-    public void delete(String id) {
+    public void delete(@NonNull String id) {
         accountRepository.deleteById(id);
     }
 
@@ -26,7 +27,7 @@ public class AccountService {
         return null;
     }
 
-    public Account find(String id) {
+    public Account find(@NonNull String id) {
         return accountRepository.findById(id).orElse(null).to();
     }
     
