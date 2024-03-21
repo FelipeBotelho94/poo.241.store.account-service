@@ -7,10 +7,10 @@ spring:
     username: ${DATABASE_USERNAME:store}
     password: ${DATABASE_PASSWORD:store}
     driver-class-name: org.postgresql.Driver
-  flyway:
-    baseline-on-migrate: true
-    schemas: account
   jpa:
     properties:
       hibernate:
         default_schema: account
+  flyway:
+    baseline-on-migrate: true
+    schemas: account
