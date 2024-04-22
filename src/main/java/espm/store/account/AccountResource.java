@@ -11,15 +11,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+
 /*
- * Aqui eh a camada de exposicao da API. No caso no padrao REST: GET, POST, PUT, DELETE.
+ * Aqui e a camada de exposicao da API. No caso no padrao REST: GET, POST, PUT, DELETE.
  */
 @RestController
 public class AccountResource {
 
     // procura por um objeto do tipo AccountService no pool de objetos e injeta aqui
     @Autowired
-    private AccountService accountService;
+    private JogadorService accountService;
 
     @PostMapping("/accounts")
     public void create(@RequestBody AccountIn in) {
@@ -45,5 +46,5 @@ public class AccountResource {
     public String hello() {
         return "Hello from Account microservice!";
     }
-    
+
 }

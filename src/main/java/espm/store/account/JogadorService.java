@@ -6,14 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 
+
+
 /* 
  * Aqui eh a camada de regra de negocio.
  */
 @Service
-public class AccountService {
+public class JogadorService {
 
     @Autowired
-    private AccountRepository accountRepository;
+    private JogadorRepository accountRepository;
 
     public Account create(Account account) {
         return accountRepository.save(new AccountModel(account)).to();
@@ -30,5 +32,7 @@ public class AccountService {
     public Account find(@NonNull String id) {
         return accountRepository.findById(id).orElse(null).to();
     }
-    
 }
+
+    
+
