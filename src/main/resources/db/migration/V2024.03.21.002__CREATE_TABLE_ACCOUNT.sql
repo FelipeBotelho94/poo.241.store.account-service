@@ -1,8 +1,31 @@
-CREATE TABLE account
+CREATE TABLE jogador
 (
-    id_account character varying(36) NOT NULL,
-    name character varying(256) NOT NULL,
-    email character varying(256) NOT NULL,
-    hash_password character varying(256) NOT NULL,
-    CONSTRAINT account_pkey PRIMARY KEY (id_account)
+    id_jogador character varying(36) NOT NULL,
+
+    jogador character varying(200) NOT NULL,
+    nacionalidade character varying(20) NOT NULL,
+    posicao character varying(50) NOT NULL,
+    equipe character varying(50) NOT NULL,
+    idade integer,
+    nascimento character varying(15) NOT NULL,
+    jogos_disputados integer,
+    inicios integer,
+    minutos integer,
+    noventa_min integer, 
+    gols integer,
+    assistencias integer,
+    gols_assistencias integer,
+    gols_penal integer,
+    penaltis_batidos integer,
+    passes_tentados integer,
+    cartoes_amarelos integer,
+    cartoes_vermelhos integer,
+    xg DOUBLE PRECISION,
+    npxg DOUBLE PRECISION,
+    xag DOUBLE PRECISION,
+    goleassis DOUBLE PRECISION,
+    progressao_carregada integer,
+    progressao_passada integer,
+    progressao_recebid integer,
+    CONSTRAINT jogador_pkey PRIMARY KEY (id_jogador)
 )
