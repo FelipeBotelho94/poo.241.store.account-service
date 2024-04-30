@@ -17,6 +17,33 @@ public class JogadorService {
     private JogadorRepository jogadorRepository;
 
     public Jogador create(Jogador jogador) {
+
+        Pessoa pessoa = pessoaRepository.findBySource(idSourcePessoa);
+        if (pessoa == null) {
+            pessoa = pessoaRepository.create(pessoa);
+        }
+
+        Time time = timeRepository.findBySource(idSourceTime);
+        if (time == null) {
+            time = timeRepository.create(time);
+        }
+
+        Contrato contrato = contratoRepository.findByAnoPessoaTimePosicao(ano, pessoa.id(), time.id(), idPosicao);
+        if (contrato == null) {
+            contrato = contratoRepository.create(contrato);
+        }
+
+        for (Indice indice : jogador.indices()) {
+            Indice indice = Indice.builder()
+                .contrato(contrato)
+                .indice(indice)
+                .valor(valor)
+                .texto(texto)
+                .build();
+            indiceRepository.create(indice);
+        }
+
+
         return jogadorRepository.save(new JogadorModel(jogador)).to();
     }
 
