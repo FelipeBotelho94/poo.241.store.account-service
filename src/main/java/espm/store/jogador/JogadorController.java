@@ -17,10 +17,10 @@ public class JogadorController {
     }
 
     @PostMapping
-    public Jogador create(@RequestBody JogadorIn jogador) { // Alterado o tipo do parâmetro e retorno para Account
+    public JogadorOut create(@RequestBody JogadorIn jogador) { // Alterado o tipo do parâmetro e retorno para Account
         System.out.println(jogador);
         System.out.println(jogador.jogador());
-        return jogadorService.create(JogadorParser.to(jogador));
+        return JogadorParser.to(jogadorService.create(JogadorParser.to(jogador)));
     }
 
     // Outros métodos de CRUD (atualização e exclusão) podem ser adicionados conforme necessário

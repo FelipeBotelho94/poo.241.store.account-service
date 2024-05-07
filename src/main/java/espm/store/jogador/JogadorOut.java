@@ -1,5 +1,7 @@
 package espm.store.jogador;
 
+import java.util.Map;
+
 import lombok.Builder;
 import lombok.experimental.Accessors;
 
@@ -12,23 +14,5 @@ public record JogadorOut (
     String equipe,
     Integer idade,
     String nascimento,
-    Integer jogosDisputados,
-    Integer inicios,
-    Integer minutos,
-    Integer noventaMin,
-    Integer gols,
-    Integer assistencias,
-    Integer golsAssistencias,
-    Integer golsPenal,
-    Integer penaltisBatidos,
-    Integer passesTentados,
-    Integer cartoesAmarelos,
-    Integer cartoesVermelhos,
-    Double xG,
-    Double npxG,
-    Double xAG,
-    Double goleassis,
-    Integer progressaoCarregada,
-    Integer progressaoPassada,
-    Integer progressaoRecebida
+    Map<String, Object> indices
 ) { }

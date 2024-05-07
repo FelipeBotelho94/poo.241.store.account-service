@@ -16,8 +16,12 @@ public class JogadorService {
     @Autowired
     private JogadorRepository jogadorRepository;
 
+    @Autowired
+    private IndiceRepository indiceRepository;
+
     public Jogador create(Jogador jogador) {
 
+        /*
         Pessoa pessoa = pessoaRepository.findBySource(idSourcePessoa);
         if (pessoa == null) {
             pessoa = pessoaRepository.create(pessoa);
@@ -45,6 +49,15 @@ public class JogadorService {
 
 
         return jogadorRepository.save(new JogadorModel(jogador)).to();
+        */
+
+        Jogador salvo = jogadorRepository.save(new JogadorModel(jogador)).to();
+        for (Indice indice : jogador.indices()) {
+            indice.jogador(salvo);
+            indiceRepository.save(new IndiceModel(indice));
+            jogador.indices().add(indice);
+        }
+        return salvo;
     }
 
     public void delete(@NonNull String id) {

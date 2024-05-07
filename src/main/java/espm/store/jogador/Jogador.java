@@ -1,5 +1,7 @@
 package espm.store.jogador;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -19,24 +21,6 @@ public final class Jogador {
     private String equipe;  // Adicionado campo 'equipe'
     private Integer idade;  // Alterado de 'id' para 'idade' e ajustado o tipo para 'String'
     private String nascimento;  // Adicionado campo 'nascimento'
-    private Integer jogosDisputados;  // Alterado de 'name' para 'MP' e ajustado o tipo para 'String'
-    private Integer inicios;  // Adicionado campo 'inicios' e ajustado o tipo para 'String'
-    private Integer minutos;  // Alterado de 'email' para 'minutos' e ajustado o tipo para 'String'
-    private Integer noventaMin;  // Adicionado campo 'noventaMin' e ajustado o tipo para 'String'
-    private Integer gols;  // Adicionado campo 'gols' e ajustado o tipo para 'String'
-    private Integer assistencias;  // Adicionado campo 'assistencias' e ajustado o tipo para 'String'
-    private Integer golsAssistencias;  // Adicionado campo 'golsAssistencias' e ajustado o tipo para 'String'
-    private Integer golsPenal;  // Adicionado campo 'golsPenal' e ajustado o tipo para 'String'
-    private Integer penaltisBatidos;  // Adicionado campo 'penaltisBatidos' e ajustado o tipo para 'String'
-    private Integer passesTentados;  // Adicionado campo 'passesTentados' e ajustado o tipo para 'String'
-    private Integer cartoesAmarelos;  // Adicionado campo 'cartoesAmarelos' e ajustado o tipo para 'String'
-    private Integer cartoesVermelhos;  // Adicionado campo 'cartoesVermelhos' e ajustado o tipo para 'String'
-    private Double xG;  // Adicionado campo 'xG' e ajustado o tipo para 'String'
-    private Double npxG;  // Adicionado campo 'npxG' e ajustado o tipo para 'String'
-    private Double xAG;  // Adicionado campo 'xAG' e ajustado o tipo para 'String'
-    private Double goleassis;  // Adicionado campo 'npxG_xAG' e ajustado o tipo para 'String'
-    private Integer progressaoCarregada;  // Adicionado campo 'progressaoCarregada' e ajustado o tipo para 'String'
-    private Integer progressaoPassada;  // Adicionado campo 'progressaoPassada' e ajustado o tipo para 'String'
-    private Integer progressaoRecebida;  // Adicionado campo 'progressaoRecebida' e ajustado o tipo para 'int'
+    private List<Indice> indices;
 
 }
