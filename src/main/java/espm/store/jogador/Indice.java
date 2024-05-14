@@ -5,9 +5,10 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 import lombok.experimental.Accessors;
 
-@Getter @Setter
+@Getter @Setter @ToString
 @Builder @Accessors(chain = true, fluent = true)
 @NoArgsConstructor @AllArgsConstructor
 public class Indice {

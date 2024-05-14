@@ -8,7 +8,7 @@ import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 
 /* 
- * Aqui eh a camada de regra de negocio.
+ * Aqui e a camada de regra de negocio.
  */
 @Service
 public class JogadorService {
@@ -20,7 +20,6 @@ public class JogadorService {
     private IndiceRepository indiceRepository;
 
     public Jogador create(Jogador jogador) {
-
         /*
         Pessoa pessoa = pessoaRepository.findBySource(idSourcePessoa);
         if (pessoa == null) {
@@ -54,8 +53,8 @@ public class JogadorService {
         Jogador salvo = jogadorRepository.save(new JogadorModel(jogador)).to();
         for (Indice indice : jogador.indices()) {
             indice.jogador(salvo);
-            indiceRepository.save(new IndiceModel(indice));
-            jogador.indices().add(indice);
+            Indice indiceSalvo = indiceRepository.save(new IndiceModel(indice)).to();
+            salvo.indices().add(indiceSalvo);
         }
         return salvo;
     }

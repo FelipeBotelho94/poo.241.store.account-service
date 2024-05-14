@@ -7,6 +7,6 @@ CREATE TABLE jogador
     posicao character varying(50) NOT NULL,
     equipe character varying(50) NOT NULL,
     idade integer,
-    nascimento character varying(15) NOT NULL,
+    nascimento character varying(15),
    CONSTRAINT jogador_pkey PRIMARY KEY (id_jogador)
 )

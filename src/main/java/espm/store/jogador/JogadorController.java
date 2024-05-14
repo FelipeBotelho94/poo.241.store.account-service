@@ -8,18 +8,18 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/jogadores")
 public class JogadorController {
-    @Autowired
-    private JogadorService jogadorService; // Renomeado de JogadorRepository para AccountRepository
+
+    @Autowired // permite que o controlador acesse os métodos do serviço JogadorService.
+    private JogadorService jogadorService;
 
     @GetMapping
-    public List<Jogador> getAllJogadores() { // Alterado o tipo de retorno para Account
+    public List<Jogador> getAllJogadores() { 
         return jogadorService.findAll();
     }
 
     @PostMapping
-    public JogadorOut create(@RequestBody JogadorIn jogador) { // Alterado o tipo do parâmetro e retorno para Account
+    public JogadorOut create(@RequestBody(required = true) JogadorIn jogador) { // Alterado o tipo do parâmetro e retorno para Account
         System.out.println(jogador);
-        System.out.println(jogador.jogador());
         return JogadorParser.to(jogadorService.create(JogadorParser.to(jogador)));
     }
 
